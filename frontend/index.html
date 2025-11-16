@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☁️ CloudQuotes - Inspirational Tech Quotes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="cloud cloud1">☁️</div>
+        <div class="cloud cloud2">☁️</div>
+        <div class="cloud cloud3">☁️</div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>☁️ CloudQuotes</h1>
+            <p>Inspirational quotes for cloud engineers and developers</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Main Quote Display -->
+        <section class="quote-container">
+            <div id="loading">Loading wisdom from the cloud... ☁️</div>
+            <div id="error-message" style="display: none;"></div>
+            
+            <div id="quote-display" style="display: none;">
+                <div class="quote-content">
+                    <div class="quote-mark">"</div>
+                    <p id="quote-text" class="quote-text"></p>
+                    <div class="quote-mark closing">"</div>
+                </div>
+                <div class="quote-author">
+                    <p id="quote-author"></p>
+                    <span id="quote-category" class="category-badge"></span>
+                </div>
+                <div class="quote-actions">
+                    <button class="btn btn-primary" onclick="getNewQuote()">
+                        🔄 New Quote
+                    </button>
+                    <button class="btn btn-secondary" onclick="showFavoriteModal()">
+                        ❤️ Favorite
+                    </button>
+                    <button class="btn btn-secondary" onclick="shareQuote()">
+                        📱 Share
+                    </button>
+                </div>
+                <div class="favorite-count">
+                    <span id="favorite-count">0</span> people love this quote
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Selection -->
+        <section class="category-section">
+            <h3>Choose a category:</h3>
+            <div class="category-buttons">
+                <button class="btn-category" onclick="getQuoteByCategory('cloud')">☁️ Cloud</button>
+                <button class="btn-category" onclick="getQuoteByCategory('programming')">💻 Programming</button>
+                <button class="btn-category" onclick="getQuoteByCategory('devops')">⚙️ DevOps</button>
+                <button class="btn-category" onclick="getNewQuote()">🎲 Random</button>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <h3 id="total-quotes">0</h3>
+                <p>Total Quotes</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="total-favorites">0</h3>
+                <p>Total Favorites</p>
+            </div>
+        </section>
+
+        <!-- Submit Quote Section -->
+        <section class="submit-section">
+            <h3>💡 Have a quote to share?</h3>
+            <button class="btn btn-primary" onclick="showSubmitModal()">Submit Your Quote</button>
+        </section>
+    </main>
+
+    <!-- Modal for favoriting -->
+    <div id="favorite-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFavoriteModal()">&times;</span>
+            <h2>❤️ Favorite This Quote</h2>
+            <form id="favorite-form" onsubmit="submitFavorite(event)">
+                <label for="user-name">Your Name:</label>
+                <input type="text" id="user-name" name="user_name" required placeholder="Enter your name">
+                <button type="submit" class="btn btn-primary">Add to Favorites</button>
+            </form>
+            <div id="favorite-message"></div>
+        </div>
+    </div>
+
+    <!-- Modal for submitting quote -->
+    <div id="submit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSubmitModal()">&times;</span>
+            <h2>💡 Submit a Quote</h2>
+            <form id="submit-form" onsubmit="submitQuote(event)">
+                <label for="quote-text-input">Quote:</label>
+                <textarea id="quote-text-input" name="text" required placeholder="Enter the quote..." rows="4"></textarea>
+                
+                <label for="quote-author-input">Author:</label>
+                <input type="text" id="quote-author-input" name="author" required placeholder="Who said it?">
+                
+                <label for="quote-category-input">Category:</label>
+                <select id="quote-category-input" name="category">
+                    <option value="cloud">☁️ Cloud</option>
+                    <option value="programming">💻 Programming</option>
+                    <option value="devops">⚙️ DevOps</option>
+                    <option value="general">📚 General</option>
+                </select>
+                
+                <button type="submit" class="btn btn-primary">Submit Quote</button>
+            </form>
+            <div id="submit-message"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Built with ☁️ on AWS | CloudQuotes © 2025</p>
+            <p class="api-status">API Status: <span id="api-status">Checking...</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
