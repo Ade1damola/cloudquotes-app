@@ -1,5 +1,6 @@
-// API URL - will be different in production
-const API_URL = window.ENV_API_URL || 'http://localhost:5000';
+// API URL - use relative path so browser calls same host (ALB)
+// This works both locally (localhost) and in cloud (ALB DNS)
+const API_URL = window.location.origin;
 
 // Store current quote globally so we can favorite/share it
 let currentQuote = null;
