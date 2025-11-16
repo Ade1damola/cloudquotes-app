@@ -1,0 +1,16 @@
+aws_region = "us-east-1"
+project_name = "cloudquotes"
+environment = "prod"
+
+db_username = "dbadmin"
+db_password = "ChangeMe123!" #change the password
+db_name = "cloudquotes"
+
+instance_type = "t2.micro"
+
+# Change to your DockerHub username
+docker_image_backend = "yourusername/cloudquotes-backend:latest"
+docker_image_frontend = "yourusername/cloudquotes-frontend:latest"
+
+# Change to your IP
+my_ip = "0.0.0.0/0"
