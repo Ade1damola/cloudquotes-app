@@ -1,6 +1,9 @@
-// API URL - use relative path so browser calls same host (ALB)
-// This works both locally (localhost) and in cloud (ALB DNS)
-const API_URL = window.location.origin;
+// API URL configuration
+// In production, API calls go through the same Load Balancer using /api/* path
+// In local development, we connect directly to localhost:5000
+const API_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:5000'  // Local development
+    : '';  // Production - same origin (Load Balancer handles routing)
 
 // Store current quote globally so we can favorite/share it
 let currentQuote = null;
